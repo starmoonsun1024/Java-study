@@ -1,17 +1,16 @@
 package com.sms.bean;
 
-public class Skill extends BaseBean {
-
+public class Skill extends Bean {
     private String name;
     private Integer level;
 
-    public Integer getLevel() {
-        return level;
-    }
+    public Skill() {}
 
-    public void setLevel(Integer level) {
+    public Skill(String name, Integer level) {
+        this.name = name;
         this.level = level;
     }
+
     public String getName() {
         return name;
     }
@@ -20,14 +19,21 @@ public class Skill extends BaseBean {
         this.name = name;
     }
 
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    @Override
     public String toString() {
         return "Skill{" +
                 "id='" + getId() + '\'' +
                 "createdTime='" + getCreatedTime() + '\'' +
                 "name='" + name + '\'' +
-                ", level='" + level + '\'' +
+                ", level=" + level +
                 '}';
     }
 }
-
-

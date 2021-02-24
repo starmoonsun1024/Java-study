@@ -2,7 +2,7 @@ package com.sms.bean;
 
 import java.util.Date;
 
-public class BaseBean {
+public class Bean {
     private Integer id;
     private Date createdTime;
 

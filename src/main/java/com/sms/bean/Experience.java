@@ -1,10 +1,8 @@
 package com.sms.bean;
 
-public class Experience extends BaseBean {
+public class Experience extends Bean {
     private String job;
     private String intro;
-    private String beginDay;
-    private String endDay;
     private Company company;
 
     public Company getCompany() {
@@ -31,30 +29,16 @@ public class Experience extends BaseBean {
         this.intro = intro;
     }
 
-    public String getBeginDay() {
-        return beginDay;
-    }
 
-    public void setBeginDay(String beginDay) {
-        this.beginDay = beginDay;
-    }
-
-    public String getEndDay() {
-        return endDay;
-    }
-
-    public void setEndDay(String endDay) {
-        this.endDay = endDay;
-    }
 
     @Override
     public String toString() {
         return "Experience{" +
+                "id='" + getId() + '\'' +
+                "createdTime='" + getCreatedTime() + '\'' +
                 "job='" + job + '\'' +
                 ", intro='" + intro + '\'' +
-                ", beginDay='" + beginDay + '\'' +
-                ", endDay='" + endDay + '\'' +
-                ", company=" + company +
+                ", company='" + company + '\'' +
                 '}';
     }
 }

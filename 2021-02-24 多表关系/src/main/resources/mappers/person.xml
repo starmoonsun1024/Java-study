@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="person">
+
+    <sql id="sqlListAll">
+        SELECT
+        p.*,
+        ic.id ic_id,
+        ic.no ic_no,
+        ic.address ic_address,
+        bc.id bc_id,
+        bc.no bc_no,
+        bc.amout bc_amout
+        FROM
+        person p
+        JOIN id_card ic ON p.id = ic.person_id
+        LEFT JOIN bank_card bc ON p.id = bc.person_id
+    </sql>
+
+    <resultMap id="rmList" type="com.sms.bean.Person">
+        <id property="id" column="id" />
+        <result property="name" column="name"/>
+        <association property="idCard" javaType="com.sms.bean.IdCard">
+            <id property="id" column="ic_id" />
+            <result property="no" column="ic_no" />
+            <result property="address" column="ic_address" />
+        </association>
+        <collection property="bankCards" ofType="com.sms.bean.BankCard">
+             <id property="id" column="bc_id"></id>
+             <result property="no" column="bc_no"></result>
+             <result property="amout" column="bc_amout"></result>
+        </collection>
+    </resultMap>
+
+    <select id="list" resultMap="rmList">
+        <include refid="sqlListAll" />
+    </select>
+
+    <select id="get" resultMap="rmList">
+        <include refid="sqlListAll" /> WHERE p.id = #{id}
+    </select>
+
+</mapper>

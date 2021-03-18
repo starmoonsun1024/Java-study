@@ -1,0 +1,31 @@
+#debug: true
+#server:
+#  port: 8081
+#spring:
+#  profile:
+#    active: dev
+#
+#---
+#server:
+#  port: 8082
+#spring:
+#  profile: dev
+#
+#---
+#server:
+#  port: 8083
+#spring:
+#  profile: test
+#关闭模板引擎的缓存
+spring:
+  thymeleaf:
+    cache: false
+  messages:
+    basename: i18n.login
+  mvc:
+    format:
+      date: yyyy-MM-dd
+server:
+  servlet:
+    context-path: /yang
+
